@@ -5,16 +5,20 @@ import '@tomo-inc/tomo-web-sdk/style.css'
 import { onMounted } from 'vue'
 
 const tomoModal = () => {
-  initTomoModal({
-    theme: 'light',
-    clientId:
-      'izEkhMZuzamb07eI3Vv7lscUK6BmoOG6xtOKFuodirUl6xuL57PPl0TolUBIzJN5fpgBsmtMpSpwQ0krBEtE71Bm',
-    chainTypes: ['evm'],
-    onConnect: () => {
-      const walletState = getWalletState()
-      console.log('onConnect', walletState)
-    },
-  })
+  try {
+    initTomoModal({
+      theme: 'light',
+      clientId:
+        'izEkhMZuzamb07eI3Vv7lscUK6BmoOG6xtOKFuodirUl6xuL57PPl0TolUBIzJN5fpgBsmtMpSpwQ0krBEtE71Bm',
+      chainTypes: ['evm'],
+      onConnect: () => {
+        const walletState = getWalletState()
+        console.log('onConnect', walletState)
+      },
+    })
+  } catch (error) {
+    console.log(error, 'initTomoModal')
+  }
 }
 
 const openModal = () => {
